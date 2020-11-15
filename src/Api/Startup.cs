@@ -27,6 +27,7 @@ namespace blog.Api
         {
             services.AddApplicationInsightsTelemetry();
             services.AddSwaggerDocument();
+            services.AddHealthChecks();
             
             services.AddControllersWithViews();
             services.AddRazorPages();

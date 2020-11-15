@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\blog.Client.csproj" />
+    <ProjectReference Include="..\Ui\blog.Ui.csproj" />
     <ProjectReference Include="..\Shared\blog.Shared.csproj" />
   </ItemGroup>
 
