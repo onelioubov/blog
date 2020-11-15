@@ -1,0 +1,31 @@
+@page "/blog"
+@using blog.Shared
+@inject HttpClient Http
+
+@if (blogPosts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="blog-posts">
+        @foreach (var post in blogPosts)
+        {
+            <NavLink class="nav-link" href=@($"/blog/{post.Slug}")>
+                <h2>@post.Title</h2>
+                <p>@post.Description</p>
+            </NavLink>
+        }
+    </div>
+}
+
+@code {
+    
+    private IEnumerable<Post> blogPosts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        blogPosts = await Http.GetFromJsonAsync<IEnumerable<Post>>("api/v1/BlogPosts");
+    }
+
+}

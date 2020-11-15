@@ -31,7 +31,7 @@ namespace blog.Api
             
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddSingleton(sp => new ContentfulClient(new HttpClient(), "deliveryApiKey", "previewApiKey", "spaceId"));
+            services.AddSingleton(sp => new ContentfulClient(new HttpClient(), _configuration["contentful:blog:deliveryApiKey"], _configuration["contentful:blog:previewApiKey"], _configuration["contentful:blog:spaceId"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
