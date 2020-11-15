@@ -11,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 using System.Linq;
 using System.Net.Http;
 
-namespace blog.Server
+namespace blog.Api
 {
     public class Startup
     {

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using blog.Shared;
 
-namespace blog.Server.Controllers
+namespace blog.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

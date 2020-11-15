@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using blog.Shared;
 
-namespace blog.Server.Controllers
+namespace blog.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

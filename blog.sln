@@ -2,9 +2,9 @@
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.0.0
 MinimumVisualStudioVersion = 16.0.0.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blog.Server", "src\Server\blog.Server.csproj", "{8F565C5E-DF18-4982-BC5B-8D029C902508}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blog.Api", "src\Api\blog.Api.csproj", "{8F565C5E-DF18-4982-BC5B-8D029C902508}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blog.Client", "src\Client\blog.Client.csproj", "{F1E5A930-BD97-4A83-B5DA-8FCD1E0560FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blog.Ui", "src\Ui\blog.Ui.csproj", "{F1E5A930-BD97-4A83-B5DA-8FCD1E0560FD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blog.Shared", "src\Shared\blog.Shared.csproj", "{D5F7F016-EE55-47D5-B3E7-A93E5B1317A6}"
 EndProject
