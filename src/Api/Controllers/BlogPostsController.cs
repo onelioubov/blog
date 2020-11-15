@@ -28,20 +28,20 @@ namespace blog.Api.Controllers
             return Ok("");
         }
 
-        [Route("{slug:string}", Name = nameof(GetBySlug))]
+        [Route("{slug}", Name = nameof(GetBySlug))]
         [HttpGet]
         [ProducesResponseType(typeof(Post), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> GetBySlug()
+        public async Task<IActionResult> GetBySlug(string slug)
         {
             return Ok("");
         }
         
-        [Route("{tag:string}", Name = nameof(GetByTag))]
+        [Route("{tag}", Name = nameof(GetByTag))]
         [HttpGet]
         [ProducesResponseType(typeof(Post), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> GetByTag()
+        public async Task<IActionResult> GetByTag(string tag)
         {
             return Ok("");
         }
