@@ -67,4 +67,23 @@ class Build : NukeBuild
                 .EnableNoRestore());
         });
 
+    Target Publish => _ => _
+        .DependsOn(Compile)
+        .Executes(() =>
+        {
+            var projectSolution = Solution.AllProjects.Where(p =>
+                !p.Name.Contains("Tests")
+                && !p.Name.Contains("build")
+                && p.Is(ProjectType.CSharpProject));
+
+            DotNetPublish(s => s
+                .SetConfiguration(Configuration)
+                .SetAssemblyVersion(GitVersion.AssemblySemVer)
+                .SetFileVersion(GitVersion.AssemblySemFileVer)
+                .SetInformationalVersion(GitVersion.InformationalVersion)
+                .EnableNoRestore()
+                .CombineWith(projectSolution, (x, p) => x
+                    .SetProject(p)
+                    .SetOutput(ArtifactsDirectory / p.Name)));
+        });
 }
