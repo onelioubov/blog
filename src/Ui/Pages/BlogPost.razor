@@ -1,0 +1,34 @@
+@page "/blog/{blogSlug}"
+@using blog.Shared
+@using System.Net
+@inject HttpClient Http
+
+@if (post == null)
+{
+    <p>No blog post found.</p>
+}
+else
+{
+    <h1>@post.Title</h1>
+    <div>
+        <h3>@post.PublishedDate.ToLongDateString()</h3>
+        <p>@post.Content</p>
+    </div>
+}
+
+@code {
+    private Post? post { get; set; }
+
+    [Parameter]
+    public string BlogSlug { get; set; }
+
+    protected override async Task OnInitializedAsync() 
+    {
+        var response = await Http.GetAsync($"/BlogPosts/{BlogSlug}");
+
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            post = await response.Content.ReadFromJsonAsync<Post>();
+        }
+    }
+}

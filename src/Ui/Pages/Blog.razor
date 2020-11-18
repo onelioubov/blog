@@ -23,9 +23,6 @@ else
     
     private IEnumerable<Post> blogPosts;
 
-    protected override async Task OnInitializedAsync()
-    {
-        blogPosts = await Http.GetFromJsonAsync<IEnumerable<Post>>("api/v1/BlogPosts");
-    }
-
+    protected override async Task OnInitializedAsync() =>
+        blogPosts = await Http.GetFromJsonAsync<IEnumerable<Post>>("/BlogPosts");
 }

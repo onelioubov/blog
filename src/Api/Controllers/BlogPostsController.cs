@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace blog.Api.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("[controller]")]
     public class BlogPostsController: ControllerBase
     {
         private readonly ILogger<BlogPostsController> _logger;
@@ -41,15 +41,6 @@ namespace blog.Api.Controllers
                 return BadRequest(e);
             }
         }
-        
-        [Route("{id:int}", Name = nameof(GetById))]
-        [HttpGet]
-        [ProducesResponseType(typeof(Post), (int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> GetById(int id)
-        {
-            return Ok("");
-        }
 
         [Route("{slug}", Name = nameof(GetBySlug))]
         [HttpGet]
@@ -57,16 +48,26 @@ namespace blog.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> GetBySlug(string slug)
         {
-            return Ok("");
-        }
-        
-        [Route("{tag}", Name = nameof(GetByTag))]
-        [HttpGet]
-        [ProducesResponseType(typeof(Post), (int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> GetByTag(string tag)
-        {
-            return Ok("");
+            _logger.LogInformation($"Retrieving post with slug {slug}.");
+            try
+            {
+                var blogPosts = await _contentClient.GetEntries<Post>();
+                var post = blogPosts.FirstOrDefault(x => x.Slug == slug);
+                if (post == null)
+                {
+                    _logger.LogError("No post with that slug found.");
+                    return NoContent();
+                }
+                else
+                {
+                    return Ok(post);
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Could not retrieve blog post with that slug.");
+                return BadRequest(e);
+            }
         }
     }
 }

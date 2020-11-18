@@ -1,0 +1,18 @@
+.index-title-image {
+    max-height: 20rem;
+    height: auto;
+    max-width: 100%;
+}
+
+.about-container {
+    position: relative;
+}
+
+.about-text {
+    font-size: x-large;
+    position: relative;
+}
+
+.about-text p {
+    margin-top: 3rem;
+}

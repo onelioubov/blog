@@ -1,0 +1,31 @@
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-bar {
+    height: 5rem;
+    background-color: rgba(0,0,0,0);
+}
+
+.title-image {
+    max-height: 4rem;
+    height: auto;
+    max-width: 100%;
+}
+
+.title-name {
+    max-height: 3rem;
+    height: auto;
+    max-width: 100%;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .collapse {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}
