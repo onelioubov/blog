@@ -8,14 +8,15 @@
 }
 else
 {
-    <div class="blog-posts">
+    <div class="blog-posts container my-xl-5">
+        <ul class="blog-list">
         @foreach (var post in blogPosts)
         {
-            <NavLink class="nav-link" href=@($"/blog/{post.Slug}")>
-                <h2>@post.Title</h2>
-                <p>@post.Description</p>
-            </NavLink>
+            <li class="post">
+                <Card BlogPost="@post"/>
+            </li>
         }
+        </ul>
     </div>
 }
 

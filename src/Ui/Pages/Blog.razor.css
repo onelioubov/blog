@@ -1,0 +1,29 @@
+.blog-posts {
+    position: relative;
+}
+
+.blog-list {
+    list-style: none;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.blog-list li {
+    position: relative;
+    padding-left: 0;
+}
+.blog-list li:before {
+    border-radius: 100%;
+    position: absolute;
+    background: #000;
+    content: '';
+}
+.blog-list li:nth-child(even) {
+    text-align: right;
+    padding-left: 0;
+}
+.blog-list li:nth-child(even):before {
+    left: auto;
+    right: 0;
+}

@@ -1,0 +1,17 @@
+@using blog.Shared
+@inject MarkdownPipeline Mkdn
+
+    <NavLink class="nav-link" href=@($"/blog/{BlogPost.Slug}")>
+        <h2>@BlogPost.Title</h2>
+        <p>@BlogPost.PublishedDate.ToLongDateString()</p>
+        <p>@PostDescription</p>
+    </NavLink>
+@code {
+
+    [Parameter] 
+    public Post BlogPost { get; set; }
+    
+    private string RenderHtmlContent(string value) => Markdown.ToHtml(value, Mkdn);
+
+    private MarkupString PostDescription => (MarkupString)RenderHtmlContent(BlogPost.Description);
+}

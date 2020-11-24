@@ -2,6 +2,7 @@
 @using blog.Shared
 @using System.Net
 @inject HttpClient Http
+@inject MarkdownPipeline Mkdn
 
 @if (post == null)
 {
@@ -9,10 +10,12 @@
 }
 else
 {
-    <h1>@post.Title</h1>
-    <div>
-        <h3>@post.PublishedDate.ToLongDateString()</h3>
-        <p>@post.Content</p>
+    <div class="container text-center">
+        <h1>@post.Title</h1>
+        <div>
+            <h3>@post.PublishedDate.ToLongDateString()</h3>
+            @PostContent
+        </div>
     </div>
 }
 
@@ -21,6 +24,10 @@ else
 
     [Parameter]
     public string BlogSlug { get; set; }
+    
+    private string RenderHtmlContent(string value) => Markdown.ToHtml(value, Mkdn);
+    
+    private MarkupString PostContent => (MarkupString)RenderHtmlContent(post.Content);
 
     protected override async Task OnInitializedAsync() 
     {
