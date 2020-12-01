@@ -1,11 +1,24 @@
 @using blog.Shared
 @inject MarkdownPipeline Mkdn
 
-    <NavLink class="nav-link" href=@($"/blog/{BlogPost.Slug}")>
-        <h2>@BlogPost.Title</h2>
-        <p>@BlogPost.PublishedDate.ToLongDateString()</p>
-        <p>@PostDescription</p>
-    </NavLink>
+@*                  *@
+@*                     <td><img class="title-image" src=@post.TitleImage.File.Url alt="Title Image"/></td> *@
+@*                     <td><Card BlogPost="@post"/></td> *@
+@*                 </tr> *@
+
+<NavLink class="nav-link" href=@($"/{BlogPost.Slug}")>
+    <div class="container-fluid list-items">
+        <div class="blog-content card border-0">
+            <div class="blog-text card-body">
+                <h2>@BlogPost.Title</h2>
+                <p class="card-text">@BlogPost.PublishedDate.ToLongDateString()</p>
+                <p class="card-text">@PostDescription</p>
+            </div>
+        </div>
+        @* <img class="title-image" src=@BlogPost.TitleImage.File.Url alt="Title Image"/> *@
+    </div>
+</NavLink>
+
 @code {
 
     [Parameter] 

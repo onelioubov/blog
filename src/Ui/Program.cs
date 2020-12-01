@@ -19,7 +19,7 @@ namespace blog.Ui
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddSingleton(sp => new  MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
+            builder.Services.AddSingleton(sp => new  MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build());
 
             await builder.Build().RunAsync();
         }

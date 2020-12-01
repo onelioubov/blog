@@ -1,10 +1,13 @@
 using System;
+using Contentful.Core.Models;
 
 namespace blog.Shared
 {
     public class Post
     {
         public int Id { get; set; }
+        
+        public Asset TitleImage { get; set; }
 
         public string Slug { get; set; }
 

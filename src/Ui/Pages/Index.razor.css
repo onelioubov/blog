@@ -1,0 +1,27 @@
+.blog-posts {
+    position: relative;
+}
+
+.blog-list {
+    list-style: none;
+    max-width: 100%;
+}
+
+.blog-list li {
+    position: relative;
+    padding-left: 0;
+}
+
+.title-image {
+    height: 10rem;
+    width: auto;
+    border-radius: 0.2rem;
+}
+
+.first-cell {
+    vertical-align: auto;
+}
+
+.second-cell {
+    vertical-align: top;
+}

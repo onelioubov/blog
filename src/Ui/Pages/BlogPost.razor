@@ -1,4 +1,4 @@
-@page "/blog/{blogSlug}"
+@page "/{blogSlug}"
 @using blog.Shared
 @using System.Net
 @inject HttpClient Http
@@ -10,10 +10,11 @@
 }
 else
 {
-    <div class="container text-center">
-        <h1>@post.Title</h1>
+    <div class="text-center banner" style="background-image: url(@post.TitleImage.File.Url)"></div>
+    <div class="container blog-container">
+        <h1 class="title-text text-center">@post.Title</h1>
         <div>
-            <h3>@post.PublishedDate.ToLongDateString()</h3>
+            <p class="published-date text-center">@post.PublishedDate.ToLongDateString()</p>
             @PostContent
         </div>
     </div>
