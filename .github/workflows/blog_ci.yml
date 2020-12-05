@@ -25,9 +25,9 @@ jobs:
         run: git fetch --prune --unshallow
       - name: Nuke restore + build + publish
         run: ./build.sh --configuration Release -target compile+publish
-      - name: Run Azure webapp deploy action using publish profile credentials
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: scatterbrained-dev-blog
-          publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-          package: './artifacts/blog.Api'
+#      - name: Run Azure webapp deploy action using publish profile credentials
+#        uses: azure/webapps-deploy@v2
+#        with:
+#          app-name: scatterbrained-dev-blog
+#          publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+#          package: './artifacts/blog.Api'
