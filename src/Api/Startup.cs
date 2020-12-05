@@ -1,15 +1,16 @@
-using Contentful.Core;
+using System;
+// using Contentful.Core;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.Newtonsoft;
 
 namespace blog.Api
 {
@@ -28,10 +29,28 @@ namespace blog.Api
             services.AddApplicationInsightsTelemetry();
             services.AddSwaggerDocument();
             services.AddHealthChecks();
-            
+
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddSingleton(sp => new ContentfulClient(new HttpClient(), _configuration["contentful:blog:deliveryApiKey"], _configuration["contentful:blog:previewApiKey"], _configuration["contentful:blog:spaceId"]));
+            
+            services.AddScoped(sp => new GraphQLHttpClient(
+                new GraphQLHttpClientOptions {
+                      EndPoint = new Uri($"https://graphql.contentful.com/content/v1/spaces/{_configuration["contentful:blog:spaceId"]}")
+                },
+                new NewtonsoftJsonSerializer(),
+                new HttpClient
+                {
+                    DefaultRequestHeaders =
+                    {
+                        Accept = {
+                            new MediaTypeWithQualityHeaderValue("application/json")
+                        }, 
+                        Authorization = new AuthenticationHeaderValue("Bearer", _configuration["contentful:blog:deliveryApiKey"])
+                    }
+                })
+            );
+            
+            //services.AddSingleton(sp => new ContentfulClient(new HttpClient(), _configuration["contentful:blog:deliveryApiKey"], _configuration["contentful:blog:previewApiKey"], _configuration["contentful:blog:spaceId"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

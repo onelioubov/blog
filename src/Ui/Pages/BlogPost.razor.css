@@ -17,5 +17,17 @@
 }
 
 .published-date {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.tags-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.tag {
+    background-color: #8cb1bf;
+    margin-left: 0.5rem;
 }

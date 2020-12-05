@@ -18,11 +18,11 @@ else
     <div class="blog-posts container my-xl-5">
         <table>
             <tbody class="blog-list">
-            @foreach (var post in blogPosts)
+            @foreach (var post in blogPosts.PostCollection.Items)
             {
-                 <tr class="post">
-                     <td class="first-cell"><img class="title-image" src=@post.TitleImage.File.Url alt="Title Image"/></td>
-                     <td class="second-cell"><Card BlogPost="@post"/></td>
+                 <tr class="blog-post">
+                     <td class="first-cell"><img class="title-image" src=@post.TitleImage.Url alt="Title Image"/></td>
+                     <td class="second-cell"><Card BlogPost="@post" /></td>
                  </tr>
             }
             </tbody>
@@ -32,8 +32,8 @@ else
 
 @code {
     
-    private IEnumerable<Post> blogPosts;
+    private PostsCollection blogPosts;
 
     protected override async Task OnInitializedAsync() =>
-        blogPosts = await Http.GetFromJsonAsync<IEnumerable<Post>>("/BlogPosts");
+        blogPosts = await Http.GetFromJsonAsync<PostsCollection>("/BlogPosts");
 }

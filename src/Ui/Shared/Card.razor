@@ -11,7 +11,7 @@
         <div class="blog-content card border-0">
             <div class="blog-text card-body">
                 <h2>@BlogPost.Title</h2>
-                <p class="card-text">@BlogPost.PublishedDate.ToLongDateString()</p>
+                <p class="card-text">@BlogPost.Sys.FirstPublishedAt.ToLongDateString()</p>
                 <p class="card-text">@PostDescription</p>
             </div>
         </div>
@@ -22,7 +22,7 @@
 @code {
 
     [Parameter] 
-    public Post BlogPost { get; set; }
+    public Blog BlogPost { get; set; }
     
     private string RenderHtmlContent(string value) => Markdown.ToHtml(value, Mkdn);
 

@@ -10,18 +10,24 @@
 }
 else
 {
-    <div class="text-center banner" style="background-image: url(@post.TitleImage.File.Url)"></div>
+    <div class="text-center banner" style="background-image: url(@post.TitleImage.Url)"></div>
     <div class="container blog-container">
         <h1 class="title-text text-center">@post.Title</h1>
         <div>
-            <p class="published-date text-center">@post.PublishedDate.ToLongDateString()</p>
+            <p class="published-date text-center">@post.Sys.FirstPublishedAt.ToLongDateString()</p>
+            <div class="tags-list">
+                @foreach (var tag in post.Tags)
+                {
+                    <button class="tag btn" type="button">@tag</button>
+                }
+            </div>
             @PostContent
         </div>
     </div>
 }
 
 @code {
-    private Post? post { get; set; }
+    private Blog? post { get; set; }
 
     [Parameter]
     public string BlogSlug { get; set; }
@@ -36,7 +42,7 @@ else
 
         if (response.StatusCode == HttpStatusCode.OK)
         {
-            post = await response.Content.ReadFromJsonAsync<Post>();
+            post = await response.Content.ReadFromJsonAsync<Blog>();
         }
     }
 }
