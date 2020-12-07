@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace blog.Api.Controllers
         
         [Route("")]
         [HttpGet]
-        [ProducesResponseType(typeof(PostsCollection), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(List<Blog>), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<IActionResult> GetAll()
         {
@@ -55,7 +56,7 @@ namespace blog.Api.Controllers
                     };
                 
                     var result = await _client.SendQueryAsync<PostsCollection>(request);
-                    return Ok(result.Data);
+                    return Ok(result.Data.PostCollection.Items.OrderByDescending(x => x.Sys.FirstPublishedAt));
             }
             catch (Exception e)
             {

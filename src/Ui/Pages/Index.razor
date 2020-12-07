@@ -18,7 +18,7 @@ else
     <div class="blog-posts container my-xl-5">
         <table>
             <tbody class="blog-list">
-            @foreach (var post in blogPosts.PostCollection.Items)
+            @foreach (var post in blogPosts)
             {
                  <tr class="blog-post">
                      <td class="first-cell"><img class="title-image" src=@post.TitleImage.Url alt="Title Image"/></td>
@@ -32,8 +32,8 @@ else
 
 @code {
     
-    private PostsCollection blogPosts;
+    private List<Blog> blogPosts;
 
     protected override async Task OnInitializedAsync() =>
-        blogPosts = await Http.GetFromJsonAsync<PostsCollection>("/BlogPosts");
+        blogPosts = await Http.GetFromJsonAsync<List<Blog>>("/BlogPosts");
 }
