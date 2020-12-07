@@ -1,5 +1,4 @@
 using System;
-//using Contentful.Core;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -17,12 +16,11 @@ namespace blog.Api.Controllers
     {
         private readonly GraphQLHttpClient _client;
         private readonly ILogger<BlogPostsController> _logger;
-        //private readonly ContentfulClient _contentClient;
-        public BlogPostsController(GraphQLHttpClient client, ILogger<BlogPostsController> logger/*,  ContentfulClient contentClient*/)
+        
+        public BlogPostsController(GraphQLHttpClient client, ILogger<BlogPostsController> logger)
         {
             _client = client;
             _logger = logger;
-            // _contentClient = contentClient;
         }
         
         [Route("")]
@@ -34,9 +32,8 @@ namespace blog.Api.Controllers
             _logger.LogInformation("Retrieving all blog posts.");
             try
             {
-                // var blogPosts = await _contentClient.GetEntries<Post>();
-                // return Ok(blogPosts);
-                var heroRequest = new GraphQLRequest
+                
+                var request = new GraphQLRequest
                     {
                         Query = @"
                             query {
@@ -56,8 +53,8 @@ namespace blog.Api.Controllers
 	                            }
                             }"
                     };
-                    var result = await _client.SendQueryAsync<PostsCollection>(heroRequest);
-                    _logger.LogDebug(result.Data.PostCollection.Items.First().Title);
+                
+                    var result = await _client.SendQueryAsync<PostsCollection>(request);
                     return Ok(result.Data);
             }
             catch (Exception e)
@@ -76,7 +73,7 @@ namespace blog.Api.Controllers
             _logger.LogInformation($"Retrieving post with slug {slug}.");
             try
             {
-                var heroRequest = new GraphQLRequest
+                var request = new GraphQLRequest
                 {
                     Query = @"
                             query {
@@ -96,22 +93,22 @@ namespace blog.Api.Controllers
 	                            }
                             }"
                 };
-                var result = await _client.SendQueryAsync<PostsCollection>(heroRequest);
-                //var blogPosts = await _contentClient.GetEntries<Blog>();
+                
+                var result = await _client.SendQueryAsync<PostsCollection>(request);
                 var post = result.Data.PostCollection.Items.FirstOrDefault(x => x.Slug == slug);
+                
                 if (post == null)
                 {
-                    _logger.LogError("No post with that slug found.");
+                    _logger.LogDebug("No post with that slug found.");
                     return NoContent();
                 }
-                else
-                {
-                    return Ok(post);
-                }
+                
+                return Ok(post);
             }
+            
             catch (Exception e)
             {
-                _logger.LogError(e, "Could not retrieve blog post with that slug.");
+                _logger.LogError(e, "Could not retrieve blog posts.");
                 return BadRequest(e);
             }
         }

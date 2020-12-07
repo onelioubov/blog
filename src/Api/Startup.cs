@@ -1,5 +1,4 @@
 using System;
-// using Contentful.Core;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -22,8 +21,6 @@ namespace blog.Api
             _configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationInsightsTelemetry();
@@ -49,8 +46,6 @@ namespace blog.Api
                     }
                 })
             );
-            
-            //services.AddSingleton(sp => new ContentfulClient(new HttpClient(), _configuration["contentful:blog:deliveryApiKey"], _configuration["contentful:blog:previewApiKey"], _configuration["contentful:blog:spaceId"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

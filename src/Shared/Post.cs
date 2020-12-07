@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Contentful.Core.Models;
 using Slugify;
 
+// This is not currently used, but I'm keeping it around for a future thought.
 namespace blog.Shared
 {
     public class Post
@@ -15,7 +15,7 @@ namespace blog.Shared
 
         public int Id { get; set; }
         
-        public Asset TitleImage { get; set; }
+        public Uri TitleImageUrl { get; set; }
 
         public string Slug => _slugGenerator.GenerateSlug(Title);
 
