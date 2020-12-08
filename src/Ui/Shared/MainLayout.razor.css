@@ -2,9 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    /*background-image: url('../images/pavan-trikutam-avJ9uz9Qhcw-unsplash.jpg');*/
-    /*background-size: cover;*/
-    /*background-repeat: no-repeat;*/
     height: 100vh;
 }
 
@@ -35,7 +32,7 @@
     color: #9DC9D9 !important;
 }
 
-@media (max-width: 640.98px) {
+@media (max-width: 824.98px) {
     .top-bar:not(.auth) {
         display: none;
     }
@@ -49,7 +46,21 @@
     }
 }
 
-@media (min-width: 641px) {
+@media (max-width: 824.98px) {
+    .top-bar:not(.auth) {
+        display: none;
+    }
+
+    .top-bar.auth {
+        justify-content: space-between;
+    }
+
+    .top-bar a, .top-bar .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 825px) {
     .top-bar {
         position: sticky;
         top: 0;
