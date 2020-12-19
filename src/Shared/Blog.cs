@@ -26,15 +26,15 @@ namespace blog.Shared
         public SysData Sys { get; set; }
             
         public Image TitleImage { get; set; }
-            
-        public class Image
-        {
-            public string Url { get; set; }
-        }
+    }
+    
+    public class Image
+    {
+        public string Url { get; set; }
+    }
 
-        public class SysData
-        {
-            public DateTime FirstPublishedAt { get; set; }
-        }
+    public class SysData
+    {
+        public DateTime FirstPublishedAt { get; set; }
     }
 }
