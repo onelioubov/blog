@@ -11,7 +11,7 @@
 .title-name {
     max-height: 3rem;
     height: auto;
-    max-width: 100%;
+    max-width: 80%;
 }
 
 .navbar .container-fluid {
@@ -27,13 +27,9 @@
         display: none;
     }
 
-    .navbar .container-flex {
+    .navbar .container-fluid {
         flex-direction: row;
         justify-content: space-between;
-    }
-    
-    .main-pages {
-        flex: 4;
     }
     
     .social-media {
@@ -58,5 +54,23 @@
         padding-top: 3rem;
         padding-bottom: 2rem;
         padding-right: 0.2rem;
+    }
+}
+
+@media (max-width: 490px) {
+    .title-image {
+        max-height: 3rem;
+        padding-right: 0.5rem;
+    }
+    
+    .title-name {
+        max-height: 2rem;
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 370px) {
+    .title-name {
+        display: none;
     }
 }
