@@ -1,17 +1,5 @@
-.navbar-toggler {
-    background-color: rgba(255, 255, 255, 0.1);
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-}
-
 .navbar-toggler:focus {
     outline: none;
-}
-
-.top-bar {
-    height: 5rem;
-    background-color: rgba(0,0,0,0);
 }
 
 .title-image {
@@ -26,56 +14,49 @@
     max-width: 100%;
 }
 
+.navbar .container-fluid {
+    display: inline-flex;
+}
+
 .nav-item ::deep a.active {
     color: #8cb1bf;
 }
 
-@media (max-width: 824.98px) {
-    .navbar-nav {
-        background-color: #ffffff;
-        position: absolute;
-    }
-    
-    .main-pages {
-        display: inline-block;
-        position: absolute;
-        top: 5rem;
-        right: 2rem;
-    }
-    
-    .social-media {
-        display: inline-block;
-        position: absolute;
-        right: 2rem;
-        top: 11rem;
-    }
-    
-    .social-media .nav-item {
-        margin: 1rem 1rem;
-    }
-}
-
-@media (max-width: 490px) {  
-    .navbar-toggler {
-        top: 5rem;
-    }
-    
-    .main-pages {
-        top: 10rem;
-    }
-    
-    .social-media {
-        top: 16rem;
-    }
-}
-
-@media (min-width: 825px) {
+@media (min-width: 992px) {
     .navbar-toggler {
         display: none;
     }
 
-    .collapse {
-        /* Never collapse the sidebar for wide screens */
-        display: block;
+    .navbar .container-flex {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .main-pages {
+        flex: 4;
+    }
+    
+    .social-media {
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    
+    .navbar .container-fluid {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-end;
+    }
+    
+    .main-pages{
+        text-align: center;
+        padding-top: 1rem;
+    }
+    
+    .social-media {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+        padding-right: 0.2rem;
     }
 }
