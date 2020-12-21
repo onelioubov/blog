@@ -5,9 +5,14 @@
     <div class="container-fluid list-items">
         <div class="blog-content card border-0">
             <div class="blog-text card-body">
-                <h2>@BlogPost.Title</h2>
-                <p class="card-text">@BlogPost.Sys.FirstPublishedAt.ToLongDateString()</p>
-                <p class="card-text">@PostDescription</p>
+                <time class="blog-date" datetime="@BlogPost.Sys.FirstPublishedAt">
+                    <span class="blog-day">@BlogPost.Sys.FirstPublishedAt.Day</span>
+                    <span class="blog-year">@BlogPost.Sys.FirstPublishedAt.ToString("MMM yyyy")</span>
+                </time>
+                <div class="card-description">
+                    <h2 class="heading">@BlogPost.Title</h2>
+                    <p class="card-text">@PostDescription</p>
+                </div>
             </div>
         </div>
     </div>

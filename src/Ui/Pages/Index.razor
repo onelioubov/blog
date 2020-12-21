@@ -3,10 +3,12 @@
 @inject HttpClient Http
 
 <Title Value="Home" />
-<div class="container page-header">
-    <h1 class="text-center py-4"><b>Hello there!</b></h1>
-    <p class="text-center">I'm Olga, a software engineer working in the .NET/Azure space. These are some of my ramblings.</p>
-    <hr/>
+<div class="banner" style="background-image: url(../images/4B8A1310.jpg)">
+    <div class="container page-header">
+        <h1 class="text-center py-4"><b>Hello there!</b></h1>
+        <p class="text-center">I'm Olga, a software engineer working in the .NET/Azure space. These are some of my ramblings.</p>
+        <hr/>
+    </div>
 </div>
 
 @if (blogPosts == null)
@@ -19,7 +21,7 @@ else
         @foreach (var post in blogPosts)
         {
             <div class="blog-post">
-                <img class="title-image" src=@post.TitleImage.Url alt="Title Image"/>
+                @* <img class="title-image" src=@post.TitleImage.Url alt="Title Image"/> *@
                 <Card BlogPost="@post" />
             </div>
             <hr/>

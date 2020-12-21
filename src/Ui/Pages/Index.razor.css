@@ -1,9 +1,16 @@
+.banner {
+    padding-top: 5rem;
+    background-size: cover;
+    background-position: center;
+}
+
 .page-header {
     padding-top: 5rem;
 }
 
 .page-header p {
     padding-bottom: 3rem;
+    font-size: 1.5rem;
 }
 
 .blog-posts {
