@@ -8,12 +8,13 @@
     margin-top: 5rem;
 }
 
-.blog-container .blockquote {
+.blog-container blockquote {
     margin-left: 1rem;
 }
 
 .title-text {
     margin-bottom: 2rem;
+    font-weight: bold;
 }
 
 .published-date {
@@ -31,4 +32,24 @@
     background-color: #8cb1bf;
     margin-left: 0.5rem;
     box-shadow: 0 0 0 0;
+}
+
+@media(min-width: 727.99px){
+    .post-content {
+        line-height: 2.5rem;
+        font-size: 21px;
+        font-weight: 200;
+    }
+
+    .blog-container {
+        max-width: 50rem;
+    }
+}
+
+@media(max-width: 727.98px) {
+    .post-content {
+        line-height: 1.5rem;
+        font-size: 15px;
+        font-weight: 200;
+    }
 }

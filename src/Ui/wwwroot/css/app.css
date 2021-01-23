@@ -13,6 +13,21 @@ html, body {
     color: #7c9ca5;
 }
 
+.post-content p {
+    font-family: sans-serif;
+}
+
+.post-content h1, .post-content h2, .post-content h4 {
+    font-weight: bold;
+    margin: 2.5rem 0;
+}
+
+.post-content img {
+    max-height: 20rem;
+    display: block;
+    margin: 2rem auto;
+}
+
 a:hover, a:active {
     color: #8cb1bf;
     text-decoration: none

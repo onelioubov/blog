@@ -1,6 +1,6 @@
 .card {
     background-color: #ffffff;
-    height: 15rem;
+    min-height: 15rem;
 }
 
 .blog-date{
@@ -13,8 +13,13 @@
     width: 100%;
 }
 
+.card-description p {
+    margin-top: 1rem;
+}
+
 .card-text {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.2rem;
 }
 
 .heading {
