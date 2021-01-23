@@ -13,7 +13,11 @@ namespace blog.Shared
             _slugGenerator = new SlugHelper();
         }
         
-        public string Slug => _slugGenerator.GenerateSlug(Title);
+        // TODO: Figure out why Slugify is ignoring "." despite it being omitted by default.
+        // Slugify.Core repo: https://github.com/ctolkien/Slugify
+        // The slug generator doesn't seem to be omitting the "." character, despite it being part of the default
+        // config. Manually replacing the "." with an empty string for now.
+        public string Slug => _slugGenerator.GenerateSlug(Title.Replace(".", String.Empty));
         
         public string Title { get; set; }
 
