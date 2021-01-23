@@ -5,12 +5,17 @@ html, body {
     /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
 }
 
-a, .btn-link {
+.navbar a, .blog-post a{
     color: #353535;
+}
+
+.post-content a {
+    color: #7c9ca5;
 }
 
 a:hover, a:active {
     color: #8cb1bf;
+    text-decoration: none
 }
 
 .btn-primary {

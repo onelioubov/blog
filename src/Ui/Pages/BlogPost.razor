@@ -14,7 +14,7 @@ else
     <div class="banner" style="background-image: url(@post.TitleImage.Url)"></div>
     <div class="container blog-container">
         <h1 class="title-text text-center">@post.Title</h1>
-        <div>
+        <div class="post-content">
             <p class="published-date text-center">@post.Sys.FirstPublishedAt.ToLongDateString()</p>
             <div class="tags-list">
                 @foreach (var tag in post.Tags)
