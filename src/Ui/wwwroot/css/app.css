@@ -17,6 +17,11 @@ html, body {
     font-family: sans-serif;
 }
 
+.post-content ul {
+    font-family: sans-serif;
+    margin: 1.5rem;
+}
+
 .post-content h1, .post-content h2, .post-content h4 {
     font-weight: bold;
     margin: 2.5rem 0;
