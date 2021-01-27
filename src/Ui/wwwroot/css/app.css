@@ -13,8 +13,27 @@ html, body {
     color: #7c9ca5;
 }
 
-.post-content p {
+.post-content p{
     font-family: sans-serif;
+}
+
+.post-content table {
+    margin: 0 0 3rem;
+}
+
+.post-content td {
+    padding: 1rem 1.8rem;
+}
+
+.post-content tr {
+    font-family: sans-serif;
+    color: #585858;
+    background-color: #f3f3f3;
+    border: 1px solid white;
+}
+
+.post-content tr:hover {
+    background-color: #dddddd;
 }
 
 .post-content ul {
