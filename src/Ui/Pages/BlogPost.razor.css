@@ -6,10 +6,7 @@
 
 .blog-container {
     margin-top: 5rem;
-}
-
-.blog-container blockquote {
-    margin-left: 1rem;
+    margin-bottom: 5rem;
 }
 
 .title-text {
@@ -37,7 +34,7 @@
 @media(min-width: 727.99px){
     .post-content {
         line-height: 2.5rem;
-        font-size: 21px;
+        font-size: 20px;
         font-weight: 200;
     }
 
